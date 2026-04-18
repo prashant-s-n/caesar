@@ -7,8 +7,8 @@ cabal-version: 2.2
 name:           caesar
 version:        0.1.0.0
 description:    Please see the README on GitHub at <https://github.com/prashant-s-n/caesar#readme>
-homepage:       
-bug-reports:    
+homepage:       https://github.com/prashant-s-n/caesar#readme
+bug-reports:    https://github.com/prashant-s-n/caesar/issues
 author:         Prashant Sharad Kumar Nalli
 maintainer:     me@prashant-writes.in
 copyright:      2026 Prashant Sharad Kumar Nalli
@@ -21,7 +21,7 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/githubuser/caesar
+  location: https://github.com/prashant-s-n/caesar
 
 library
   exposed-modules:
