@@ -15,7 +15,11 @@ module Lib (
     rotChar,
     caeser,
     rotate,
-    rot135
+    rot135,
+    caeser2,
+    alphabets,
+    count,
+    countEach,
 ) where
 
 -- Type alias for the Alphabet type
@@ -29,6 +33,9 @@ upperAlphabet = ['A' .. 'Z' :: Char]
 
 digits :: Alphabet
 digits = ['0' .. '9']
+
+alphabets :: Alphabet
+alphabets = lowerAlphabet ++ upperAlphabet
 
 isLower :: Char -> Bool
 isLower char = char `elem` lowerAlphabet
@@ -96,3 +103,12 @@ rotate ch
 
 rot135 :: String -> String
 rot135 message = map rotate message
+
+caeser2 :: Int -> String -> String
+caeser2 offset = map (rotChar offset)
+
+count :: Char -> String -> Int
+count ch = length . filter(== ch) 
+
+countEach :: Alphabet -> String -> [(Char, Int)]
+countEach alp message =  map (\a -> (a, (count a message))) alp
