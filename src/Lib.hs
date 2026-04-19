@@ -14,6 +14,8 @@ module Lib (
     digitRot,
     rotChar,
     caeser,
+    rotate,
+    rot135
 ) where
 
 -- Type alias for the Alphabet type
@@ -39,7 +41,7 @@ isDigit char = char `elem` digits
 
 isMisc :: Char -> Bool
 -- isMisc char = not (isLower char || isUpper char || isDigit char)
-isMisc char = char `notElem` lowerAlphabet ++ upperAlphabet ++ digits
+isMisc char = char `notElem` (lowerAlphabet ++ upperAlphabet ++ digits)
 
 listLength :: [Char] -> Int
 listLength [] = 0
@@ -74,6 +76,23 @@ rotChar offset ch
     | otherwise = ch
 
 
+-- caeser :: Int -> String -> String
+-- caeser _ [] = []
+-- caeser offset (x:xs) = rotChar offset x : caeser offset xs
+
+-- transform _ [] = []
+-- transform fun (x:xs) = fun x : transform fun xs
+
 caeser :: Int -> String -> String
-caeser _ [] = []
-caeser offset (x:xs) = rotChar offset x : caeser offset xs
+caeser offset message = map (\ch -> rotChar offset ch) message
+
+rotate :: Char -> Char
+rotate ch
+    | isDigit ch = rotChar 5 ch
+    | isLower ch = rotChar 13 ch
+    | isUpper ch = rotChar 13 ch
+    | isMisc ch = ch
+    | otherwise = ch
+
+rot135 :: String -> String
+rot135 message = map rotate message
